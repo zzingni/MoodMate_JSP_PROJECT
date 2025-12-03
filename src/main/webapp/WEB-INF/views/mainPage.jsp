@@ -107,28 +107,8 @@
 </head>
 <body>
     <!-- 네비게이션 -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-	    <div class="container">
-	    	<!-- 로고/홈 링크 -->
-	        <a class="navbar-brand fw-bold" href="/">MoodMate</a>
-	        <div class="ms-auto">
+	<%@ include file="/WEB-INF/views/header.jsp" %>
 	
-	            <!-- 로그인 안 했을 때 로그인 버튼만 노출 -->
-	            <c:if test="${empty sessionScope.loginUser}">
-	                <a class="btn btn-outline-primary" href="/login">로그인</a>
-	            </c:if>
-	
-	            <!-- 로그인 했을 때 마이페이지 / 모임 만들기 / 로그아웃 노출 -->
-	            <c:if test="${not empty sessionScope.loginUser}">
-	                <a class="btn btn-outline-secondary me-2" href="/mypage">마이페이지</a>
-	                <a class="btn btn-outline-primary me-2" href="/meeting/create">+ 모임 만들기</a>
-	                <a class="btn btn-danger" href="/logout">로그아웃</a>
-	            </c:if>
-	
-	        </div>
-	    </div>
-	</nav>
-
     <!-- 메인 히어로 -->
     <section class="main">
     	<!-- 배경 이미지 -->
