@@ -5,82 +5,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>모임 목록</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-	<style>
-        body { background-color: #f8f9fa; }
+<meta charset="utf-8">
+<title>모임 목록</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<style>
+	body { background-color: #f8f9fa; }
 
-        /* 카테고리 메뉴 */
-		.category-menu {
-		    background: linear-gradient(135deg, #ffffff 0%, #f3f6ff 100%);
-		    border-radius: 18px;
-		    padding: 20px 18px;
-		    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-		    position: sticky;
-		    top: 20px;
-		}
-		
-		.category-menu h6 {
-		    font-size: 1rem;
-		    font-weight: 700;
-		    margin-bottom: 18px;
-		    color: #2c3e50;
-		    border-left: 4px solid #0d6efd;
-		    padding-left: 8px;
-		}
-		
-		/* 버튼 스타일 */
-		.category-menu a {
-		    display: block;
-		    margin-bottom: 10px;
-		    padding: 10px 12px;
-		    background: #fff;
-		    border-radius: 10px;
-		    border: 1px solid #e0e5ff;
-		    color: #3a3f52;
-		    font-size: 0.95rem;
-		    font-weight: 600;
-		    transition: 0.25s;
-		}
-		
-		.category-menu a:hover {
-		    background: #0d6efd;
-		    color: #fff;
-		    transform: translateX(6px);
-		    box-shadow: 0 4px 10px rgba(13,110,253,0.3);
-		}
-		
-		/* 선택된 카테고리(선택시 class="active" 줄 경우) */
-		.category-menu a.active {
-		    background: #0d6efd;
-		    color: #fff;
-		    box-shadow: 0 4px 10px rgba(13,110,253,0.3);
-		    transform: translateX(6px);
-		}
+	/* 카테고리 메뉴 */
+	.category-menu {
+	    background: linear-gradient(135deg, #ffffff 0%, #f3f6ff 100%);
+	    border-radius: 18px;
+	    padding: 20px 18px;
+	    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+	    position: sticky;
+	    top: 20px;
+	}
+	
+	.category-menu h6 {
+	    font-size: 1rem;
+	    font-weight: 700;
+	    margin-bottom: 18px;
+	    color: #2c3e50;
+	    border-left: 4px solid #0d6efd;
+	    padding-left: 8px;
+	}
+	
+	/* 버튼 스타일 */
+	.category-menu a {
+	    display: block;
+	    margin-bottom: 10px;
+	    padding: 10px 12px;
+	    background: #fff;
+	    border-radius: 10px;
+	    border: 1px solid #e0e5ff;
+	    color: #3a3f52;
+	    font-size: 0.95rem;
+	    font-weight: 600;
+	    transition: 0.25s;
+	}
+	
+	.category-menu a:hover {
+	    background: #0d6efd;
+	    color: #fff;
+	    transform: translateX(6px);
+	    box-shadow: 0 4px 10px rgba(13,110,253,0.3);
+	}
+	
+	/* 선택된 카테고리(선택시 class="active" 줄 경우) */
+	.category-menu a.active {
+	    background: #0d6efd;
+	    color: #fff;
+	    box-shadow: 0 4px 10px rgba(13,110,253,0.3);
+	    transform: translateX(6px);
+	}
 
-        /* 카드 스타일 */
-        .card {
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-        .card img {
-            height: 160px;
-            object-fit: cover;
-        }
-        .card h5 {
-            font-weight: 600;
-        }
-        .card p {
-            font-size: 0.9rem;
-        }
-    </style>
+	/* 카드 스타일 */
+	.card {
+	    border-radius: 16px;
+	    overflow: hidden;
+	    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+	    transition: transform 0.2s, box-shadow 0.2s;
+	}
+	.card:hover {
+	    transform: translateY(-4px);
+	    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+	}
+	.card img {
+	    height: 160px;
+	    object-fit: cover;
+	}
+	.card h5 {
+	    font-weight: 600;
+	}
+	.card p {
+	    font-size: 0.9rem;
+	}
+</style>
 </head>
 <body>
 	<!-- 상단 공통 header include -->
