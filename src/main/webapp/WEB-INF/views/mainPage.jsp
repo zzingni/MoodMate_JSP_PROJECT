@@ -8,33 +8,102 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-	<style>
-        body { background:#f5f5f5; }
+<style>
+      body { background:#f5f5f5; }
 
-        /* 메인 영역 */
-		.main {position: relative; padding: 100px 0; color: #fff; overflow: hidden;}
-		.main-bg {position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; filter: brightness(80%);}
-        .main-inner {display: flex; align-items: center; justify-content: space-between; gap: 30px;}
-        .main h1 {font-size: 48px; font-weight: 700;}
-        .main .badge {display: inline-block; padding: 8px 12px;}
-        
-        /* 카테고리 섹션 */
-        .category-row { padding:30px 0; background:#fff; }
-        .category-card { border-radius:16px; padding:18px; text-align:center; box-shadow:0 6px 18px #fff; }
-        .category-card img { width:52px; height:52px; margin-bottom:8px; }
-
-        /* 메인 레이아웃 (카테고리 밑 컨텐츠 영역) */
-        .page-wrap { display:flex; gap:24px; margin-top:30px; }
-        .sidebar { width:260px; } /* 필요 시 사이드바 추가용 */
-        .meeting-grid { flex:1; }
-        .meeting-card { border-radius:14px; overflow:hidden; }
-        .meeting-card .card-body h5 { font-weight:600; }
-        .badge-category { background:#f1f1f1; padding:6px 10px; border-radius:999px; font-size:12px; }
-
-        @media (max-width:768px){
-            .main-inner { flex-direction:column; gap:20px; }
-        }
-    </style>
+    /* 메인 영역 */
+	.main {
+	    position: relative;
+	    padding: 100px 0;
+	    color: #fff;
+	    overflow: hidden;
+	}
+	
+	.main-bg {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    object-fit: cover;
+	    z-index: -1;
+	    filter: brightness(80%);
+	}
+	
+	.main-inner {
+	    display: flex;
+	    align-items: center;
+	    justify-content: space-between;
+	    gap: 30px;
+	}
+	
+	.main h1 {
+	    font-size: 48px;
+	    font-weight: 700;
+	}
+	
+	.main .badge {
+	    display: inline-block;
+	    padding: 8px 12px;
+	}
+	
+	/* 카테고리 섹션 */
+	.category-row {
+	    padding: 30px 0;
+	    background: #fff;
+	}
+	
+	.category-card {
+	    border-radius: 16px;
+	    padding: 18px;
+	    text-align: center;
+	    box-shadow: 0 6px 18px #fff;
+	}
+	
+	.category-card img {
+	    width: 52px;
+	    height: 52px;
+	    margin-bottom: 8px;
+	}
+	
+	/* 메인 레이아웃 (카테고리 밑 컨텐츠 영역) */
+	.page-wrap {
+	    display: flex;
+	    gap: 24px;
+	    margin-top: 30px;
+	}
+	
+	.sidebar {
+	    width: 260px; /* 필요 시 사이드바 추가용 */
+	}
+	
+	.meeting-grid {
+	    flex: 1;
+	}
+	
+	.meeting-card {
+	    border-radius: 14px;
+	    overflow: hidden;
+	}
+	
+	.meeting-card .card-body h5 {
+	    font-weight: 600;
+	}
+	
+	.badge-category {
+	    background: #f1f1f1;
+	    padding: 6px 10px;
+	    border-radius: 999px;
+	    font-size: 12px;
+	}
+	
+	@media (max-width: 768px) {
+	    .main-inner {
+	        flex-direction: column;
+	        gap: 20px;
+	    }
+	}
+</style>
 </head>
 <body>
     <!-- 네비게이션 -->
