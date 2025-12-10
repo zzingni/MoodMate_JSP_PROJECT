@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -115,7 +116,7 @@
 					            <div class="p-3">
 					
 					                <div class="small text-muted mb-1">
-					                    ${m.category} • ${m.meetingDate}
+					                    ${m.category} • <fmt:formatDate value="${m.meetingDate}" pattern="yyyy/MM/dd(E) HH:mm" />
 					                </div>
 					
 					                <h5>${m.title}</h5>

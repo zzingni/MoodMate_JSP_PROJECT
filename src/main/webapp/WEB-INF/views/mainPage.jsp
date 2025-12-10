@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -201,7 +202,7 @@
                             	<!-- 카테고리 / 날짜 -->
                                 <div class="d-flex justify-content-between align-items-center mb-2">
                                     <div class="badge-category">${m.category}</div>
-                                    <small class="text-muted">${m.meetingDate}</small>
+                                    <small class="text-muted"><fmt:formatDate value="${m.meetingDate}" pattern="yyyy/MM/dd(E) HH:mm" /></small>
                                 </div>
                                 
                                 <!-- 모임 제목 -->

@@ -77,45 +77,49 @@
 </style>
 </head>
 <body>
-    <div class="meeting-card">
-        <h3>새 모임 생성</h3>
-        <form method="post" action="/meeting/create">
-            <input class="form-control mb-3" name="title" placeholder="제목" required="required">
-            <textarea class="form-control mb-3" name="content" placeholder="내용" rows="4" required="required"></textarea>
-            <input type="datetime-local" class="form-control mb-3" name="meetingDate" id="meetingDate" required="required">
-            <input class="form-control mb-3" name="location" placeholder="장소" required="required">
-            <input type="number" class="form-control mb-3" name="capacity" placeholder="인원수" required="required">
-            <select class="form-select mb-3" name="category" required="required">
-                <option>영화</option>
-                <option>연극</option>
-                <option>뮤지컬</option>
-                <option>독서</option>
-            </select>
-            <input class="form-control mb-4" name="contentName" placeholder="컨텐츠명 (예 : 인터스텔라)" required="required">
-            <button class="btn btn-primary w-100">등록하기</button>
-        </form>
-    </div>
+<a class="btn btn-outline-secondary position-absolute top-0 start-0 m-3"
+   onclick="history.back()">
+    <i class="bi bi-arrow-left"></i> 뒤로가기
+</a>
+<div class="meeting-card">
+    <h3>새 모임 생성</h3>
+    <form method="post" action="/meeting/create">
+        <input class="form-control mb-3" name="title" placeholder="제목" required="required">
+        <textarea class="form-control mb-3" name="content" placeholder="내용" rows="4" required="required"></textarea>
+        <input type="datetime-local" class="form-control mb-3" name="meetingDate" id="meetingDate" required="required">
+        <input class="form-control mb-3" name="location" placeholder="장소" required="required">
+        <input type="number" class="form-control mb-3" name="capacity" placeholder="인원수" required="required">
+        <select class="form-select mb-3" name="category" required="required">
+            <option>영화</option>
+            <option>연극</option>
+            <option>뮤지컬</option>
+            <option>독서</option>
+        </select>
+        <input class="form-control mb-4" name="contentName" placeholder="컨텐츠명 (예 : 인터스텔라)" required="required">
+        <button class="btn btn-primary w-100">등록하기</button>
+    </form>
+</div>
 
-   <script>
-	    document.addEventListener('DOMContentLoaded', function () {
-	        const dateInput = document.getElementById('meetingDate');
-	        if (!dateInput) return;
-	
-	        let now = new Date();
-	
-	        // 만약 Invalid Date 발생하면 강제로 Date.now() 사용
-	        if (isNaN(now.getTime())) {
-	            now = new Date(Date.now());
-	        }
-	
-	        const year = now.getFullYear();
-	        const month = String(now.getMonth() + 1).padStart(2, '0');
-	        const day = String(now.getDate()).padStart(2, '0');
-	        const hours = String(now.getHours()).padStart(2, '0');
-	        const minutes = String(now.getMinutes()).padStart(2, '0');
-	
-	        dateInput.value = `${year}-${month}-${day}T${hours}:${minutes}`;
-	    });
-	</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const dateInput = document.getElementById('meetingDate');
+    if (!dateInput) return;
+
+    let now = new Date();
+
+    // 만약 Invalid Date 발생하면 강제로 Date.now() 사용
+    if (isNaN(now.getTime())) {
+        now = new Date(Date.now());
+    }
+
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+
+    dateInput.value = `${year}-${month}-${day}T${hours}:${minutes}`;
+});
+</script>
 </body>
 </html>

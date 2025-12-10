@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,20 +115,20 @@
         <!-- 내가 만든 모임 -->
         <section id="myCreatedMeetings" class="card-section">
             <div class="row g-4">
-                <c:forEach items="${createdMeetings}" var="m">
+                <c:forEach items="${myMeetings}" var="m">
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="card meeting-card shadow-sm">
-                            <img src="/image/movie.jpg" class="card-img-top" alt="meeting">
+                            <img src="${m.imageUrl}" class="card-img-top" alt="meeting">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center mb-2">
                                     <div class="badge-category">${m.category}</div>
-                                    <small class="text-muted">${m.meetDate}</small>
+                                    <small class="text-muted"><fmt:formatDate value="${m.meetingDate}" pattern="yyyy/MM/dd(E) HH:mm" /></small>
                                 </div>
-                                <h5><a href="/meeting/${m.id}" class="text-decoration-none text-dark">${m.title}</a></h5>
+                                <h5><a href="/meeting/${m.meetingId}" class="text-decoration-none text-dark">${m.title}</a></h5>
                                 <p class="small text-truncate" style="max-height:40px">${m.content}</p>
                                 <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <small class="text-muted">장소: ${m.place}</small>
-                                    <a href="/meeting/${m.id}" class="btn btn-sm btn-outline-primary">상세</a>
+                                    <small class="text-muted">장소: ${m.location}</small>
+                                    <a href="/meeting/detail/${m.meetingId}" class="btn btn-sm btn-outline-primary">상세</a>
                                 </div>
                             </div>
                         </div>
@@ -141,20 +142,20 @@
             <div class="row g-4">
             
             	<%-- createdMeetings 리스트를 순회하며 카드 하나씩 출력 --%>
-                <c:forEach items="${appliedMeetings}" var="m">
+                <c:forEach items="${joinedMeetings}" var="m">
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="card meeting-card shadow-sm">
-                            <img src="/image/movie.jpg" class="card-img-top" alt="meeting">
+                            <img src="${m.imageUrl}" class="card-img-top" alt="meeting">
                             <div class="card-body">
                             
                             	<!-- 카테고리 / 모임 날짜 -->
                                 <div class="d-flex justify-content-between align-items-center mb-2">
                                     <div class="badge-category">${m.category}</div>
-                                    <small class="text-muted">${m.meetDate}</small>
+                                    <small class="text-muted"><fmt:formatDate value="${m.meetingDate}" pattern="yyyy/MM/dd(E) HH:mm" /></small>
                                 </div>
                                 
                                 <!-- 모임 제목 (상세 페이지 링크) -->
-                                <h5><a href="/meeting/${m.id}" class="text-decoration-none text-dark">${m.title}</a></h5>
+                                <h5><a href="/meeting/${m.meetingId}" class="text-decoration-none text-dark">${m.title}</a></h5>
                                 
                                 <!-- 모임 내용 요약 -->
                                 <p class="small text-truncate" style="max-height:40px">${m.content}</p>
@@ -164,7 +165,7 @@
                                     <span class="${m.status == 'approved' ? 'status-approved' : 'status-rejected'}">
                                         ${m.status == 'approved' ? '승인' : '거절'}
                                     </span>
-                                    <a href="/meeting/${m.id}" class="btn btn-sm btn-outline-primary">상세</a>
+                                    <a href="/meeting/detail/${m.meetingId}" class="btn btn-sm btn-outline-primary">상세</a>
                                 </div>
                             </div>
                         </div>

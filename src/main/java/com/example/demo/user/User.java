@@ -1,11 +1,10 @@
 package com.example.demo.user;
-
-import java.lang.reflect.Member;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.example.demo.meeting.Meeting;
+import com.example.demo.member.Member;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

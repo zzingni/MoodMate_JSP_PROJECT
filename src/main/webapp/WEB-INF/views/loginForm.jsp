@@ -16,6 +16,7 @@
             height: 100vh;
             background-color: #f9f9f9;
         }
+       
         .btn-fullwidth {
             width: 100%;
             height: 45px; /* 텍스트박스랑 높이 맞추기 */
@@ -23,21 +24,25 @@
     </style>
 </head>
 <body>
-    <div class="login-box">
-        <h2 class="text-center mb-4">로그인</h2>
+<a class="btn btn-outline-secondary position-absolute top-0 start-0 m-3"
+   onclick="history.back()">
+    <i class="bi bi-arrow-left"></i> 뒤로가기
+</a>
+<div class="login-box">
+    <h2 class="text-center mb-4">로그인</h2>
 
-        <form method="post" action="/auth/login">
-            
-            <label class="form-label">아이디</label>
-            <input class="form-control mb-3" name="loginId" required>
+    <form method="post" action="/auth/login">
+        
+        <label class="form-label">아이디</label>
+        <input class="form-control mb-3" name="loginId" required>
 
-            <label class="form-label">비밀번호</label>
-            <input type="password" class="form-control mb-4" name="password" required>
+        <label class="form-label">비밀번호</label>
+        <input type="password" class="form-control mb-4" name="password" required>
 
-            <button class="btn btn-primary btn-fullwidth">로그인</button>
-        </form>
-        <br>
-        <button class="btn btn-outline-secondary btn-fullwidth" onclick="location.href='/join'">회원가입</button>
-    </div>
+        <button class="btn btn-primary btn-fullwidth">로그인</button>
+    </form>
+    <br>
+    <button class="btn btn-outline-secondary btn-fullwidth" onclick="location.href='/join'">회원가입</button>
+</div>
 </body>
 </html>

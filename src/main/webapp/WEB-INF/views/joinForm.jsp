@@ -35,52 +35,56 @@
 </head>
 
 <body>
-    <div class="signup-box">
-        <h2 class="text-center mb-4">회원가입</h2>
+<a class="btn btn-outline-secondary position-absolute top-0 start-0 m-3"
+   onclick="history.back()">
+    <i class="bi bi-arrow-left"></i> 뒤로가기
+</a>
+<div class="signup-box">
+    <h2 class="text-center mb-4">회원가입</h2>
 
-        <form method="post" action="/join">
+    <form method="post" action="/join">
 
-            <label class="form-label">아이디</label>
-            <input class="form-control mb-3" name="loginId" required>
+        <label class="form-label">아이디</label>
+        <input class="form-control mb-3" name="loginId" required>
 
-            <label class="form-label">비밀번호</label>
-            <input type="password" class="form-control mb-3" name="password" required>
+        <label class="form-label">비밀번호</label>
+        <input type="password" class="form-control mb-3" name="password" required>
 
-            <label class="form-label">이름</label>
-            <input class="form-control mb-3" name="name" required>
+        <label class="form-label">이름</label>
+        <input class="form-control mb-3" name="name" required>
 
-            <label class="form-label">닉네임</label>
-            <input class="form-control mb-3" name="nickname" required>
-            
-            <label class="form-label">성별</label>
-            <div class="btn-group-grid mb-3">
-                <input type="radio" class="btn-check" name="gender" id="male" value="남" autocomplete="off" checked>
-                <label class="btn btn-outline-primary btn-fullwidth" for="male">남</label>
+        <label class="form-label">닉네임</label>
+        <input class="form-control mb-3" name="nickname" required>
+        
+        <label class="form-label">성별</label>
+        <div class="btn-group-grid mb-3">
+            <input type="radio" class="btn-check" name="gender" id="male" value="남" autocomplete="off" checked>
+            <label class="btn btn-outline-primary btn-fullwidth" for="male">남</label>
 
-                <input type="radio" class="btn-check" name="gender" id="female" value="여" autocomplete="off">
-                <label class="btn btn-outline-primary btn-fullwidth" for="female">여</label>
-            </div>
+            <input type="radio" class="btn-check" name="gender" id="female" value="여" autocomplete="off">
+            <label class="btn btn-outline-primary btn-fullwidth" for="female">여</label>
+        </div>
 
-            <label class="form-label">나이</label>
-            <input class="form-control mb-3" name="age">
+        <label class="form-label">나이</label>
+        <input class="form-control mb-3" name="age">
 
-            <label class="form-label">관심 분야</label>
-            <div class="btn-group-grid-multi">
-                <input type="checkbox" class="btn-check" name="favorite" id="movie" value="영화" autocomplete="off">
-                <label class="btn btn-outline-success btn-fullwidth" for="movie">영화</label>
+        <label class="form-label">관심 분야</label>
+        <div class="btn-group-grid-multi">
+            <input type="checkbox" class="btn-check" name="favorite" id="movie" value="영화" autocomplete="off">
+            <label class="btn btn-outline-success btn-fullwidth" for="movie">영화</label>
 
-                <input type="checkbox" class="btn-check" name="favorite" id="play" value="연극" autocomplete="off">
-                <label class="btn btn-outline-success btn-fullwidth" for="play">연극</label>
+            <input type="checkbox" class="btn-check" name="favorite" id="play" value="연극" autocomplete="off">
+            <label class="btn btn-outline-success btn-fullwidth" for="play">연극</label>
 
-                <input type="checkbox" class="btn-check" name="favorite" id="musical" value="뮤지컬" autocomplete="off">
-                <label class="btn btn-outline-success btn-fullwidth" for="musical">뮤지컬</label>
+            <input type="checkbox" class="btn-check" name="favorite" id="musical" value="뮤지컬" autocomplete="off">
+            <label class="btn btn-outline-success btn-fullwidth" for="musical">뮤지컬</label>
 
-                <input type="checkbox" class="btn-check" name="favorite" id="reading" value="독서" autocomplete="off">
-                <label class="btn btn-outline-success btn-fullwidth" for="reading">독서</label>
-            </div>
+            <input type="checkbox" class="btn-check" name="favorite" id="reading" value="독서" autocomplete="off">
+            <label class="btn btn-outline-success btn-fullwidth" for="reading">독서</label>
+        </div>
 
-            <button class="btn btn-primary w-100" style="height:45px">가입하기</button>
-        </form>
-    </div>
+        <button class="btn btn-primary w-100" style="height:45px">가입하기</button>
+    </form>
+</div>
 </body>
 </html>

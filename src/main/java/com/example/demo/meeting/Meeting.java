@@ -1,6 +1,5 @@
 package com.example.demo.meeting;
 
-import java.lang.reflect.Member;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,6 +8,7 @@ import java.util.List;
 import org.hibernate.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.example.demo.member.Member;
 import com.example.demo.user.User;
 
 import jakarta.persistence.Column;
