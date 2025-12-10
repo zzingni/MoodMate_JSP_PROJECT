@@ -80,18 +80,18 @@
     <div class="meeting-card">
         <h3>새 모임 생성</h3>
         <form method="post" action="/meeting/create">
-            <input class="form-control mb-3" name="title" placeholder="제목">
-            <textarea class="form-control mb-3" name="content" placeholder="내용" rows="4"></textarea>
-            <input type="datetime-local" class="form-control mb-3" name="meetDate" id="meetDate">
-            <input class="form-control mb-3" name="place" placeholder="장소">
-            <input type="number" class="form-control mb-3" name="maxPeople" placeholder="인원수">
-            <select class="form-select mb-3" name="category">
+            <input class="form-control mb-3" name="title" placeholder="제목" required="required">
+            <textarea class="form-control mb-3" name="content" placeholder="내용" rows="4" required="required"></textarea>
+            <input type="datetime-local" class="form-control mb-3" name="meetDate" id="meetDate" required="required">
+            <input class="form-control mb-3" name="place" placeholder="장소" required="required">
+            <input type="number" class="form-control mb-3" name="maxPeople" placeholder="인원수" required="required">
+            <select class="form-select mb-3" name="category" required="required">
                 <option>영화</option>
                 <option>연극</option>
                 <option>뮤지컬</option>
                 <option>독서</option>
             </select>
-            <input class="form-control mb-4" name="contentName" placeholder="컨텐츠명 (예: 영화 제목)">
+            <input class="form-control mb-4" name="contentName" placeholder="컨텐츠명 (예 : 인터스텔라)" required="required">
             <button class="btn btn-primary w-100">등록하기</button>
         </form>
     </div>

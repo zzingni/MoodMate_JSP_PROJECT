@@ -35,8 +35,6 @@
 </head>
 
 <body>
-	<!-- 네비게이션 -->
-	<%@ include file="/WEB-INF/views/header.jsp" %>
     <div class="signup-box">
         <h2 class="text-center mb-4">회원가입</h2>
 
