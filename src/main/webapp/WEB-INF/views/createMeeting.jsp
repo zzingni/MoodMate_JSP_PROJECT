@@ -96,16 +96,26 @@
         </form>
     </div>
 
-    <script>
-        // 현재 날짜와 시간을 datetime-local 기본값으로 설정
-        const dateInput = document.getElementById('meetDate');
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        dateInput.value = `${year}-${month}-${day}T${hours}:${minutes}`;
-    </script>
+   <script>
+	    document.addEventListener('DOMContentLoaded', function () {
+	        const dateInput = document.getElementById('meetingDate');
+	        if (!dateInput) return;
+	
+	        let now = new Date();
+	
+	        // 만약 Invalid Date 발생하면 강제로 Date.now() 사용
+	        if (isNaN(now.getTime())) {
+	            now = new Date(Date.now());
+	        }
+	
+	        const year = now.getFullYear();
+	        const month = String(now.getMonth() + 1).padStart(2, '0');
+	        const day = String(now.getDate()).padStart(2, '0');
+	        const hours = String(now.getHours()).padStart(2, '0');
+	        const minutes = String(now.getMinutes()).padStart(2, '0');
+	
+	        dateInput.value = `${year}-${month}-${day}T${hours}:${minutes}`;
+	    });
+	</script>
 </body>
 </html>

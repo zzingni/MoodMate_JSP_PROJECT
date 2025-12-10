@@ -17,16 +17,27 @@ public class UserInitConfig {
 			// 이미 존재하면 넣지 않기
 			if (userRepository.findByLoginId("test") == null) {
 				
-				User user = new User();
-				user.setLoginId("test");
-				user.setPassword("1234");
-				user.setName("테스트유저");
-				user.setNickname("징니");
-				user.setGender("여");
-				user.setAge(26);
-				user.setFavorite("영화");
+				User user1 = new User();
+				user1.setLoginId("test");
+				user1.setPassword("1234");
+				user1.setName("테스트유저");
+				user1.setNickname("징니");
+				user1.setGender("여");
+				user1.setAge(26);
+				user1.setFavorite("영화");
 				
-				userRepository.save(user);
+				userRepository.save(user1);
+				
+				User user2 = new User();
+				user2.setLoginId("test2");
+				user2.setPassword("1234");
+				user2.setName("테스트그만");
+				user2.setNickname("징니징");
+				user2.setGender("여");
+				user2.setAge(26);
+				user2.setFavorite("독서");
+				
+				userRepository.save(user2);
 			}
 		};
 	}

@@ -94,7 +94,7 @@
             <div class="col-md-3 mb-4">
                 <div class="category-menu">
                     <h6>카테고리</h6>
-                    <c:set var="categories" value="추천,영화,연극,독서"/>
+                    <c:set var="categories" value="추천,영화,연극,뮤지컬,독서"/>
                     <c:forEach var="cat" items="${fn:split(categories, ',')}">
                         <a href="/meetings?category=${cat}">${cat}</a>
                     </c:forEach>
