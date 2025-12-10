@@ -1,11 +1,18 @@
 package com.example.demo.user;
 
+import java.lang.reflect.Member;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.demo.meeting.Meeting;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -54,4 +61,10 @@ public class User {
 	        this.createdAt = LocalDateTime.now();
 	    }
 	}
+	
+	@OneToMany(mappedBy = "user")
+	private List<Meeting> meetings = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "user")
+	private List<Member> members = new ArrayList<>();
 }
