@@ -1,0 +1,9 @@
+package com.example.demo.meeting;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MeetingRepository extends JpaRepository<Meeting, Integer> {
+	Optional<Meeting> findByMeetingId(int meetingId);
+}

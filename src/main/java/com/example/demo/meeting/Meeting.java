@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.hibernate.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.example.demo.user.User;
 
@@ -40,6 +41,7 @@ public class Meeting {
 	@Column(name="meeting_image_url")
 	private String imageUrl;
 	
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	@Column(name="meeting_date", nullable = false)
 	private Date meetingDate;
 	
@@ -47,7 +49,10 @@ public class Meeting {
 	private String location;
 	
 	@Column(nullable = false)
-	private int member;
+	private int capacity;
+	
+	@Column(name = "current_count", nullable = false)
+	private int currentCount;
 	
 	@Column(length = 255, nullable = false)
 	private String category;
@@ -66,8 +71,8 @@ public class Meeting {
         if (this.meetingStatus == null) {
             this.meetingStatus = "진행";
     }
-    if (this.createdAt == null) {
-        this.createdAt = LocalDateTime.now();
+	    if (this.createdAt == null) {
+	        this.createdAt = LocalDateTime.now();
+	    }
     }
-}
 }

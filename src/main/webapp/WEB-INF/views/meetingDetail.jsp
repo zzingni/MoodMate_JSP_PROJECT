@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,26 +78,11 @@
 </style>
 </head>
 <body>
-
-<%-- 스크립틀릿으로 더미 데이터 생성 --%>
-<%
-    java.util.Map<String, Object> meetingData = new java.util.HashMap<>();
-    meetingData.put("category", "영화");
-    meetingData.put("title", "주말 영화 감상 모임");
-    meetingData.put("content", "이번 주말에 최신 영화를 같이 보고 이야기를 나누는 모임입니다.");
-    meetingData.put("place", "강남 CGV");
-    meetingData.put("meetDate", "2025-12-07 14:00");
-    meetingData.put("currentPeople", 5);
-    meetingData.put("maxPeople", 10);
-
-    request.setAttribute("meeting", meetingData);
-%>
-
 <div class="meeting-card">
     <img src="/image/lala.jpg" alt="모임 이미지">
 
     <div class="meeting-body">
-        <!-- 카테고리 배지 -->
+        <%-- <!-- 카테고리 배지 -->
         <c:choose>
             <c:when test="${meeting.category == '추천'}">
                 <span class="badge bg-primary badge-category">${meeting.category}</span>
@@ -110,23 +96,20 @@
             <c:when test="${meeting.category == '독서'}">
                 <span class="badge bg-info text-dark badge-category">${meeting.category}</span>
             </c:when>
-            <c:when test="${meeting.category == '전시'}">
-                <span class="badge bg-danger badge-category">${meeting.category}</span>
-            </c:when>
             <c:otherwise>
                 <span class="badge bg-secondary badge-category">${meeting.category}</span>
             </c:otherwise>
-        </c:choose>
+        </c:choose> --%>
 
         <h3 class="meeting-title">${meeting.title}</h3>
         <p class="meeting-content">${meeting.content}</p>
 
-        <p class="meeting-info"><strong>장소:</strong> ${meeting.place}</p>
-        <p class="meeting-info"><strong>일시:</strong> ${meeting.meetDate}</p>
-        <p class="meeting-info"><strong>현재 인원:</strong> ${meeting.currentPeople} / ${meeting.maxPeople}</p>
+        <p class="meeting-info"><strong>장소 :</strong> ${meeting.location}</p>
+        <p class="meeting-info"><strong>일시 :</strong><fmt:formatDate value="${meeting.meetingDate}" pattern="yyyy-MM-dd HH:mm" /></p>
+        <p class="meeting-info"><strong>현재 인원 :</strong> ${meeting.currentCount} / ${meeting.capacity}</p>
 
         <c:choose>
-            <c:when test="${meeting.currentPeople >= meeting.maxPeople}">
+            <c:when test="${meeting.currentCount >= meeting.capacity}">
                 <div class="alert alert-warning" role="alert">
                     모집 인원이 마감되었습니다. 신청할 수 없습니다.
                 </div>

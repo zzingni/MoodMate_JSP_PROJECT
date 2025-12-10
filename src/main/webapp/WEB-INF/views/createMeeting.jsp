@@ -82,9 +82,9 @@
         <form method="post" action="/meeting/create">
             <input class="form-control mb-3" name="title" placeholder="제목" required="required">
             <textarea class="form-control mb-3" name="content" placeholder="내용" rows="4" required="required"></textarea>
-            <input type="datetime-local" class="form-control mb-3" name="meetDate" id="meetDate" required="required">
-            <input class="form-control mb-3" name="place" placeholder="장소" required="required">
-            <input type="number" class="form-control mb-3" name="maxPeople" placeholder="인원수" required="required">
+            <input type="datetime-local" class="form-control mb-3" name="meetingDate" id="meetingDate" required="required">
+            <input class="form-control mb-3" name="location" placeholder="장소" required="required">
+            <input type="number" class="form-control mb-3" name="capacity" placeholder="인원수" required="required">
             <select class="form-select mb-3" name="category" required="required">
                 <option>영화</option>
                 <option>연극</option>
