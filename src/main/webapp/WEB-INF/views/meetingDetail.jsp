@@ -105,9 +105,9 @@
         <p class="meeting-content">${meeting.content}</p>
 
         <p class="meeting-info"><strong>장소 :</strong> ${meeting.location}</p>
-        <p class="meeting-info"><strong>일시 :</strong><fmt:formatDate value="${meeting.meetingDate}" pattern="yyyy-MM-dd HH:mm" /></p>
+        <p class="meeting-info"><strong>일시 :</strong> <fmt:formatDate value="${meeting.meetingDate}" pattern="yyyy-MM-dd HH:mm" /></p>
         <p class="meeting-info"><strong>현재 인원 :</strong> ${meeting.currentCount} / ${meeting.capacity}</p>
-
+		<p class="meeting-info"><strong>컨텐츠명 :</strong> ${meeting.contentName}</p>
         <c:choose>
             <c:when test="${meeting.currentCount >= meeting.capacity}">
                 <div class="alert alert-warning" role="alert">
