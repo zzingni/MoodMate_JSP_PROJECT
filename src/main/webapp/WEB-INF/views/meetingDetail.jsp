@@ -115,10 +115,19 @@
         <c:choose>
 		    <%-- 로그인한 사용자가 모임 생성자일 때 --%>
 		    <c:when test="${loginUser.userId == meeting.user.userId}">
-		        <button class="btn btn-warning btn-apply"
-		                onclick="location.href='/meeting/${meeting.meetingId}/applicants'">
-		            신청 현황 확인
-		        </button>
+		        <div class="d-flex gap-2 mt-3">
+			        <!-- 신청 현황 보기 -->
+			        <button class="btn btn-warning w-50"
+			                onclick="location.href='/meeting/${meeting.meetingId}/applicants'">
+			            신청 현황
+			        </button>
+			
+			        <!-- 모임 목록으로 -->
+			        <button class="btn btn-outline-secondary w-50"
+			                onclick="location.href='/meeting/list'">
+			            모임 목록
+			        </button>
+			    </div>
 		    </c:when>
 		
 		    <%-- 마감된 경우 --%>
