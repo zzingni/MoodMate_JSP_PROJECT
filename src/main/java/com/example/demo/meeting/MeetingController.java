@@ -1,11 +1,14 @@
 package com.example.demo.meeting;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.user.User;
 
@@ -49,10 +52,36 @@ public class MeetingController {
 		return "meetingDetail";
 	}
 	
-	// 모임 리스트 페이지로 이동
+	// 모임 리스트 페이지로 이동(db에 있는 meeting List와 같이 넘김)
 	@GetMapping("/list")
-	public String meetingList() {
-		return "meetingList";
+	public String meetingList(@RequestParam(required = false) String category, Model model, HttpSession session) {
+		List<Meeting> meetings;
+		
+		// 현재 로그인한 사용자 정보
+	    User loginUser = (User) session.getAttribute("loginUser");
+
+	    if (category == null || category.equals("전체")) {
+	        meetings = meetingRepository.findAll();
+	    }
+	    else if (category.equals("추천")) {
+	        if (loginUser != null && loginUser.getFavorite() != null) {
+	            // 관심 분야와 일치하는 모임만 추천
+	            meetings = meetingRepository.findByCategory(loginUser.getFavorite());
+	        } else {
+	            // 로그인 안 했으면 전체 보여주는게 안전함
+	            meetings = meetingRepository.findAll();
+	        }
+	    }
+	    else {
+	        // 일반 카테고리 필터 (영화/연극/뮤지컬/독서)
+	        meetings = meetingRepository.findByCategory(category);
+	    }
+		
+	    model.addAttribute("meetings", meetings);
+	    model.addAttribute("selectedCategory", category);
+	    model.addAttribute("favorite", loginUser != null ? loginUser.getFavorite() : null);
+
+	    return "meeting/list";
 	}
 	
 }
