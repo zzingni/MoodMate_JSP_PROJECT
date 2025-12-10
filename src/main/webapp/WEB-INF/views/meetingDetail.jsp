@@ -95,20 +95,26 @@
 		<p class="meeting-info"><strong>컨텐츠명 :</strong> ${meeting.contentName}</p>
         <c:choose>
 		    <%-- 로그인한 사용자가 모임 생성자일 때 --%>
-		    <c:when test="${loginUser.userId == meeting.user.userId}">
+		    <c:when test="${not empty loginUser and loginUser.userId == meeting.user.userId}">
 		        <div class="d-flex gap-2 mt-3">
-			        <!-- 신청 현황 보기 -->
-			        <button class="btn btn-warning w-50"
-			                onclick="location.href='/meeting/${meeting.meetingId}/applicants'">
-			            신청 현황
-			        </button>
-			
-			        <!-- 모임 목록으로 -->
-			        <button class="btn btn-outline-secondary w-50"
-			                onclick="location.href='/meeting/list'">
-			            모임 목록
-			        </button>
-			    </div>
+		            <button class="btn btn-warning w-50"
+		                    onclick="location.href='/meeting/${meeting.meetingId}/applicants'">
+		                신청 현황
+		            </button>
+		
+		            <button class="btn btn-outline-secondary w-50"
+		                    onclick="location.href='/meeting/list'">
+		                모임 목록
+		            </button>
+		        </div>
+		    </c:when>
+		
+		    <%-- 로그인하지 않은 경우 --%>
+		    <c:when test="${empty loginUser}">
+		        <button class="btn btn-primary btn-apply"
+		                onclick="alert('로그인을 해주세요!'); location.href='/login';">
+		            모임 신청하기
+		        </button>
 		    </c:when>
 		
 		    <%-- 마감된 경우 --%>
@@ -119,7 +125,7 @@
 		        <button class="btn btn-secondary btn-apply" disabled>신청 불가</button>
 		    </c:when>
 		
-		    <%-- 일반 유저에게만 모임 신청하기 버튼 표시 --%>
+		    <%-- 일반 유저(로그인 상태) --%>
 		    <c:otherwise>
 		        <button class="btn btn-primary btn-apply"
 		                onclick="location.href='/meeting/${meeting.meetingId}/join'">
