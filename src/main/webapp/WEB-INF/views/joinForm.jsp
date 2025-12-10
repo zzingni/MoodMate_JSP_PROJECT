@@ -41,7 +41,7 @@
         <form method="post" action="/join">
 
             <label class="form-label">아이디</label>
-            <input class="form-control mb-3" name="loingId" required>
+            <input class="form-control mb-3" name="loginId" required>
 
             <label class="form-label">비밀번호</label>
             <input type="password" class="form-control mb-3" name="password" required>

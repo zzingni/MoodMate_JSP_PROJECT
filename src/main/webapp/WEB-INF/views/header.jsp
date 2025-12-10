@@ -25,13 +25,12 @@
 	                <a class="btn btn-outline-primary" href="/join">회원가입</a>
 	            </c:if>
 	
-
-	            <!-- 로그인 했을 때 닉네임 표시 영역 -->
+	            <!-- 로그인 했을 때 마이페이지 / 모임 만들기 / 로그아웃 노출 -->
+	            <c:if test="${not empty sessionScope.loginUser}">
+	            	<!-- 로그인 했을 때 닉네임 표시 영역 -->
 				    <span class="me-3">
 				        <strong>${sessionScope.loginUser.nickname}</strong> 님, 안녕하세요 😊
 				    </span>
-	            <!-- 로그인 했을 때 마이페이지 / 모임 만들기 / 로그아웃 노출 -->
-	            <c:if test="${not empty sessionScope.loginUser}">
 	                <a class="btn btn-outline-secondary me-2" href="/mypage">마이페이지</a>
 	                <a class="btn btn-outline-primary me-2" href="/meeting/create">+ 모임 만들기</a>
 	                <a class="btn btn-danger" href="/logout">로그아웃</a>
