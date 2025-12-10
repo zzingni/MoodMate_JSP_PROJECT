@@ -36,3 +36,15 @@ out/
 ### VS Code ###
 .vscode/
 src/main/resources/application.properties
+
+# Eclipse workspace
+.metadata/
+.settings/
+
+# Logs
+*.log
+
+# Cache
+*.tree
+*.history
+*.cache

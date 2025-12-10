@@ -21,7 +21,8 @@
 	
 	            <!-- 로그인 안 했을 때 로그인 버튼만 노출 -->
 	            <c:if test="${empty sessionScope.loginUser}">
-	                <a class="btn btn-outline-primary" href="/login">로그인</a>
+	                <a class="btn btn-outline-primary" href="/loginForm">로그인</a>
+	                <a class="btn btn-outline-primary" href="/joinForm">회원가입</a>
 	            </c:if>
 	
 	             <!-- 로그인 했을 때 마이페이지 / 모임 만들기 / 로그아웃 노출 -->
