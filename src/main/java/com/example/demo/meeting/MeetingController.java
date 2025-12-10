@@ -38,11 +38,14 @@ public class MeetingController {
 	
 	// 모임 선택시 디테일 페이지로 이동
 	@GetMapping("/detail/{id}")
-	public String detail(@PathVariable("id") int id, Model model) {
+	public String detail(@PathVariable("id") int id, Model model, HttpSession session) {
 		Meeting meeting = meetingRepository.findByMeetingId(id)
 				.orElseThrow(() -> new IllegalArgumentException("존재하지 않는 모임입니다. : " + id));
 		
+		User loginUser = (User) session.getAttribute("loginUser");
+		 
 		model.addAttribute("meeting", meeting);
+		model.addAttribute("loginUser", loginUser); // detail 페이지에서 현재 로그인 사용자와 다른 사용자 구분 해야 함. 
 		return "meetingDetail";
 	}
 }

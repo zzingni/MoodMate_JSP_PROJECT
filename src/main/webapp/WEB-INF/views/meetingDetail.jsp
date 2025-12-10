@@ -78,6 +78,10 @@
 </style>
 </head>
 <body>
+<!-- 공통 헤더 부분 -->
+<%@ include file="/WEB-INF/views/header.jsp" %>
+
+
 <div class="meeting-card">
     <img src="/image/lala.jpg" alt="모임 이미지">
 
@@ -109,16 +113,31 @@
         <p class="meeting-info"><strong>현재 인원 :</strong> ${meeting.currentCount} / ${meeting.capacity}</p>
 		<p class="meeting-info"><strong>컨텐츠명 :</strong> ${meeting.contentName}</p>
         <c:choose>
-            <c:when test="${meeting.currentCount >= meeting.capacity}">
-                <div class="alert alert-warning" role="alert">
-                    모집 인원이 마감되었습니다. 신청할 수 없습니다.
-                </div>
-                <button class="btn btn-secondary btn-apply" disabled>신청 불가</button>
-            </c:when>
-            <c:otherwise>
-                <button class="btn btn-primary btn-apply">모임 신청하기</button>
-            </c:otherwise>
-        </c:choose>
+		    <%-- 로그인한 사용자가 모임 생성자일 때 --%>
+		    <c:when test="${loginUser.userId == meeting.user.userId}">
+		        <button class="btn btn-warning btn-apply"
+		                onclick="location.href='/meeting/${meeting.meetingId}/applicants'">
+		            신청 현황 확인
+		        </button>
+		    </c:when>
+		
+		    <%-- 마감된 경우 --%>
+		    <c:when test="${meeting.currentCount >= meeting.capacity}">
+		        <div class="alert alert-warning" role="alert">
+		            모집 인원이 마감되었습니다. 신청할 수 없습니다.
+		        </div>
+		        <button class="btn btn-secondary btn-apply" disabled>신청 불가</button>
+		    </c:when>
+		
+		    <%-- 일반 유저에게만 모임 신청하기 버튼 표시 --%>
+		    <c:otherwise>
+		        <button class="btn btn-primary btn-apply"
+		                onclick="location.href='/meeting/${meeting.meetingId}/join'">
+		            모임 신청하기
+		        </button>
+		    </c:otherwise>
+		
+		</c:choose>
     </div>
 </div>
 </body>
