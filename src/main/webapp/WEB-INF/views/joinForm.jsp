@@ -35,6 +35,8 @@
 </head>
 
 <body>
+	<!-- 네비게이션 -->
+	<%@ include file="/WEB-INF/views/header.jsp" %>
     <div class="signup-box">
         <h2 class="text-center mb-4">회원가입</h2>
 
@@ -79,7 +81,7 @@
                 <label class="btn btn-outline-success btn-fullwidth" for="reading">독서</label>
             </div>
 
-            <button class="btn btn-primary w-100">가입하기</button>
+            <button class="btn btn-primary w-100" style="height:45px">가입하기</button>
         </form>
     </div>
 </body>

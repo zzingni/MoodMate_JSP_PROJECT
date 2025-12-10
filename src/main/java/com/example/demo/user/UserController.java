@@ -60,8 +60,12 @@ public class UserController {
 		
 		// 메인페이지로 이동
 		return "redirect:/";
-		
-			
 	}
-
+	
+	// 로그아웃
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate(); // 세션 전체 삭제
+		return "redirect:/";
+	} 
 }

@@ -18,11 +18,10 @@
         }
         .btn-fullwidth {
             width: 100%;
-            height: 38px; /* 텍스트박스랑 높이 맞추기 */
+            height: 45px; /* 텍스트박스랑 높이 맞추기 */
         }
     </style>
 </head>
-
 <body>
     <div class="login-box">
         <h2 class="text-center mb-4">로그인</h2>
@@ -37,6 +36,8 @@
 
             <button class="btn btn-primary btn-fullwidth">로그인</button>
         </form>
+        <br>
+        <button class="btn btn-outline-secondary btn-fullwidth" onclick="location.href='/join'">회원가입</button>
     </div>
 </body>
 </html>

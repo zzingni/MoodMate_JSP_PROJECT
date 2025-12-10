@@ -33,7 +33,7 @@
 				    </span>
 	                <a class="btn btn-outline-secondary me-2" href="/mypage">마이페이지</a>
 	                <a class="btn btn-outline-primary me-2" href="/meeting/create">+ 모임 만들기</a>
-	                <a class="btn btn-danger" href="/logout">로그아웃</a>
+	                <a class="btn btn-danger" href="/logout" onclick="return confirm('정말 로그아웃 하시겠습니까?');">로그아웃</a>
 	            </c:if>
 	        </div>
 	    </div>
