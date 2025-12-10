@@ -30,7 +30,7 @@
         <form method="post" action="/auth/login">
             
             <label class="form-label">아이디</label>
-            <input class="form-control mb-3" name="username" required>
+            <input class="form-control mb-3" name="loginId" required>
 
             <label class="form-label">비밀번호</label>
             <input type="password" class="form-control mb-4" name="password" required>

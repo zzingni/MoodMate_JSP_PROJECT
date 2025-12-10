@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -17,13 +18,13 @@ public class UserController {
 	
 	private final UserService userService;
 	
-	// 로그인
+	// 로그인 페이지
 	@GetMapping("/login")
 	public String loginForm() {
 		return "loginForm";
 	}
 	
-	// 회원가입 / GET join
+	// 회원가입 페이지 / GET join
 	@GetMapping("/join")
 	public String joinForm() {
 		return "joinForm";
@@ -38,6 +39,26 @@ public class UserController {
 		PrintWriter out = response.getWriter();
 		out.println("<script>alert('회원가입이 완료되었습니다.'); location.href='/login';</script>");
 		out.flush();
+	}
+	
+	// 로그인 후 처리
+	@PostMapping("/auth/login")
+	public String login(String loginId, String password, HttpSession session) {
+		
+		User user = userService.login(loginId, password);
+		
+		if (user == null) {
+			// 로그인 실패 시 
+			return "redirect:/login?error=1";
+		}
+		
+		// 로그인 성공 -> 세선 저장
+		session.setAttribute("loginUser" , user);
+		
+		// 메인페이지로 이동
+		return "redirect:/";
+		
+			
 	}
 
 }

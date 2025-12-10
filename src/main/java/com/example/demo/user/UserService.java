@@ -15,5 +15,23 @@ public class UserService {
 		userRepository.save(user);
 	}
 	
+	// 로그인 처리
+	public User login(String loginId, String password) {
+		
+		User user = userRepository.findbyLoginId(loginId);
+		
+		// 사용자 존재하지 않으면 로그인 실패
+		if (user == null) {
+			return null;
+		}
+		
+		// 비밀번호 불일치 -> 로그인 실패
+		if (user.getPassword().equals(password)) {
+			return null;
+		}
+		
+		// 로그인 성공 -> User 객체 반환
+		return user;
+	}
 	
 }
