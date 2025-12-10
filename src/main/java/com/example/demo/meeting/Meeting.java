@@ -1,7 +1,10 @@
 package com.example.demo.meeting;
 
+import java.lang.reflect.Member;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.Length;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,6 +18,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -31,6 +35,9 @@ public class Meeting {
 	@ManyToOne
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
+	
+	@OneToMany(mappedBy = "meeting")
+	private List<Member> members = new ArrayList<>();
 	
 	@Column(length = 100, nullable = false)
 	private String title;
