@@ -32,6 +32,7 @@
 	
 	/* 버튼 스타일 */
 	.category-menu a {
+		text-decoration: none;
 	    display: block;
 	    margin-bottom: 10px;
 	    padding: 10px 12px;
@@ -104,7 +105,7 @@
                 </div>
             </div>
 
-            <!-- 모임 카드 -->
+             <!-- 모임 카드 -->
             <div class="col-md-9">
                 <div class="row g-4">
                     <c:forEach var="m" items="${meetings}">

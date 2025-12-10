@@ -125,31 +125,60 @@
 	</section>
 
     <!-- 카테고리 아이콘 영역 -->
-    <section class="category-row">
+	<section class="category-row">
 	    <div class="container">
-	        <%-- 카테고리 영문/한글 매핑 설정 (한 줄로 작성) --%>
-	        <c:set var="categories" value="recommend:추천,movie:영화,theater:연극,musical:뮤지컬,reading:독서" />
-	        
 	        <div class="row g-3 justify-content-center">
-	        	<%-- 쉼표 기준으로 쪼갠 뒤 하나씩 처리 --%>
-	            <c:forEach var="catEntry" items="${fn:split(categories, ',')}">
-	                <%-- 앞뒤 공백 제거 --%>
-	                <c:set var="catEntryTrimmed" value="${fn:trim(catEntry)}" />
-	                
-	                <%-- : 뒷부분 = 한글 value (화면에 찍히는 이름) --%>
-	                <c:set var="key" value="${fn:substringBefore(catEntryTrimmed, ':')}" />    <%-- 영문 (파일 이름) --%>
-	                <c:set var="value" value="${fn:substringAfter(catEntryTrimmed, ':')}" />   <%-- 한글 (화면 표시) --%>
-	                
-	                <div class="col-auto">
-	                    <div class="category-card">
-	                        <%-- 아이콘: 영문 파일 이름(key) 사용 --%>
-	                        <img src="/image/${key}.png" alt="${value} 아이콘" style="width:52px; height:52px; margin-bottom:8px;">
-	                        
-	                        <%-- 하단에 한글 이름(value) 표시 --%>
-	                        <div class="mt-2 small">${value}</div>
+	
+	            <!-- 추천 -->
+	            <div class="col-auto">
+	                <a href="/meeting/list?category=추천" class="text-decoration-none" style="color:inherit;">
+	                    <div class="category-card text-center">
+	                        <img src="/image/recommend.png" alt="추천 아이콘" style="width:52px; height:52px; margin-bottom:8px;">
+	                        <div class="mt-2 small">추천</div>
 	                    </div>
-	                </div>
-	            </c:forEach>
+	                </a>
+	            </div>
+	
+	            <!-- 영화 -->
+	            <div class="col-auto">
+	                <a href="/meeting/list?category=영화" class="text-decoration-none" style="color:inherit;">
+	                    <div class="category-card text-center">
+	                        <img src="/image/movie.png" alt="영화 아이콘" style="width:52px; height:52px; margin-bottom:8px;">
+	                        <div class="mt-2 small">영화</div>
+	                    </div>
+	                </a>
+	            </div>
+	
+	            <!-- 연극 -->
+	            <div class="col-auto">
+	                <a href="/meeting/list?category=연극" class="text-decoration-none" style="color:inherit;">
+	                    <div class="category-card text-center">
+	                        <img src="/image/theater.png" alt="연극 아이콘" style="width:52px; height:52px; margin-bottom:8px;">
+	                        <div class="mt-2 small">연극</div>
+	                    </div>
+	                </a>
+	            </div>
+	
+	            <!-- 뮤지컬 -->
+	            <div class="col-auto">
+	                <a href="/meeting/list?category=뮤지컬" class="text-decoration-none" style="color:inherit;">
+	                    <div class="category-card text-center">
+	                        <img src="/image/musical.png" alt="뮤지컬 아이콘" style="width:52px; height:52px; margin-bottom:8px;">
+	                        <div class="mt-2 small">뮤지컬</div>
+	                    </div>
+	                </a>
+	            </div>
+	
+	            <!-- 독서 -->
+	            <div class="col-auto">
+	                <a href="/meeting/list?category=독서" class="text-decoration-none" style="color:inherit;">
+	                    <div class="category-card text-center">
+	                        <img src="/image/reading.png" alt="독서 아이콘" style="width:52px; height:52px; margin-bottom:8px;">
+	                        <div class="mt-2 small">독서</div>
+	                    </div>
+	                </a>
+	            </div>
+	
 	        </div>
 	    </div>
 	</section>
@@ -157,34 +186,34 @@
     <!-- 메인 콘텐츠, 모임 리스트 -->
     <div class="container page-wrap">
         <main class="meeting-grid">
-            <h5>활동이 활발한 모임</h5>
+            <h5>이런 모임이 있어요!</h5>
             <div class="row mt-3 g-4">
             
-            	<%-- 최신 모임 리스트 반복 표시 (latestMeetings는 컨트롤러에서) --%>
-                <c:forEach items="${latestMeetings}" var="m">
+            	<%-- 모임 리스트 반복 표시 --%>
+                <c:forEach items="${meetings}" var="m">
                     <div class="col-6 col-lg-4">
                         <div class="card meeting-card">
                         
                         	 <!-- 모임 썸네일 (이미지 없을 때 기본 이미지) -->
-                            <img src="/resources/img/meeting_default.jpg" class="card-img-top" alt="meeting">
+                            <img src="${m.imageUrl }" class="card-img-top" alt="meeting">
                             <div class="card-body">
                             
                             	<!-- 카테고리 / 날짜 -->
                                 <div class="d-flex justify-content-between align-items-center mb-2">
                                     <div class="badge-category">${m.category}</div>
-                                    <small class="text-muted">${m.meetDate}</small>
+                                    <small class="text-muted">${m.meetingDate}</small>
                                 </div>
                                 
                                 <!-- 모임 제목 -->
-                                <h5><a href="/meeting/${m.id}" class="text-decoration-none text-dark">${m.title}</a></h5>
+                                <h5><a href="/meeting/${m.title}" class="text-decoration-none text-dark">${m.title}</a></h5>
                                 
                                 <!-- 모임 내용 요약 (두 줄 정도로 잘리도록) -->
                                 <p class="small text-truncate" style="max-height:40px">${m.content}</p>
                                 
                                 <!-- 장소 / 상세보기 버튼 -->
                                 <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <small class="text-muted">장소: ${m.place}</small>
-                                    <a href="/meeting/${m.id}" class="btn btn-sm btn-outline-primary">상세</a>
+                                    <small class="text-muted">장소: ${m.location}</small>
+                                    <a href="/meeting/detail/${m.meetingId}" class="btn btn-sm btn-outline-primary">상세</a>
                                 </div>
                             </div>
                         </div>
