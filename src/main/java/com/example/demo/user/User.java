@@ -7,10 +7,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
 @Data
+@Table(name="users")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,9 +33,6 @@ public class User {
 	
 	@Column(nullable = false, length = 10)
 	private String gender;
-	
-	@Column(nullable = false, length = 255)
-	private String address;
 	
 	@Column(nullable = false)
 	private int age;

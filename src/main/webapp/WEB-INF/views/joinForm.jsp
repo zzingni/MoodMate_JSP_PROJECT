@@ -41,7 +41,7 @@
         <form method="post" action="/join">
 
             <label class="form-label">아이디</label>
-            <input class="form-control mb-3" name="username" required>
+            <input class="form-control mb-3" name="loingId" required>
 
             <label class="form-label">비밀번호</label>
             <input type="password" class="form-control mb-3" name="password" required>
@@ -66,16 +66,16 @@
 
             <label class="form-label">관심 분야</label>
             <div class="btn-group-grid-multi">
-                <input type="checkbox" class="btn-check" name="interest" id="movie" value="영화" autocomplete="off">
+                <input type="checkbox" class="btn-check" name="favorite" id="movie" value="영화" autocomplete="off">
                 <label class="btn btn-outline-success btn-fullwidth" for="movie">영화</label>
 
-                <input type="checkbox" class="btn-check" name="interest" id="play" value="연극" autocomplete="off">
+                <input type="checkbox" class="btn-check" name="favorite" id="play" value="연극" autocomplete="off">
                 <label class="btn btn-outline-success btn-fullwidth" for="play">연극</label>
 
-                <input type="checkbox" class="btn-check" name="interest" id="musical" value="뮤지컬" autocomplete="off">
+                <input type="checkbox" class="btn-check" name="favorite" id="musical" value="뮤지컬" autocomplete="off">
                 <label class="btn btn-outline-success btn-fullwidth" for="musical">뮤지컬</label>
 
-                <input type="checkbox" class="btn-check" name="interest" id="reading" value="독서" autocomplete="off">
+                <input type="checkbox" class="btn-check" name="favorite" id="reading" value="독서" autocomplete="off">
                 <label class="btn btn-outline-success btn-fullwidth" for="reading">독서</label>
             </div>
 
