@@ -94,41 +94,40 @@
             <div class="col-md-3 mb-4">
                 <div class="category-menu">
                     <h6>카테고리</h6>
-                    <c:set var="categories" value="추천,영화,연극,뮤지컬,독서"/>
-                    <c:forEach var="cat" items="${fn:split(categories, ',')}">
-                        <a href="/meetings?category=${cat}">${cat}</a>
-                    </c:forEach>
+                    <c:set var="categories" value="전체,추천,영화,연극,뮤지컬,독서"/>
+					<c:forEach var="cat" items="${fn:split(categories, ',')}">
+					    <a href="/meeting/list?category=${cat}"
+					       class="${cat == selectedCategory ? 'active' : ''}">
+					        ${cat}
+					    </a>
+					</c:forEach>
                 </div>
             </div>
 
             <!-- 모임 카드 -->
             <div class="col-md-9">
                 <div class="row g-4">
-                    <c:set var="titles" value="주말 영화 관람,연극 관람 모임,책 읽고 토론하기"/>
-                    <c:set var="categoriesData" value="영화,연극,독서"/>
-                    <c:set var="contents" value="최신 영화를 함께 보고 간단히 후기 나누기,작은 연극 공연을 함께 관람하고 이야기 나누기,이번 달 선정 도서를 읽고 함께 토론하는 모임"/>
-                    <c:set var="places" value="CGV 강남,대학로 소극장,홍대 카페"/>
-                    <c:set var="dates" value="2025-11-30,2025-12-05,2025-12-01"/>
-                    <c:set var="ids" value="1,2,3"/>
-
-                    <c:forEach var="i" begin="0" end="2">
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <img src="/resources/img/meeting_default.jpg" class="w-100">
-                                <div class="p-3">
-                                    <div class="small text-muted mb-1">
-                                        ${fn:split(categoriesData, ',')[i]} • ${fn:split(dates, ',')[i]}
-                                    </div>
-                                    <h5>${fn:split(titles, ',')[i]}</h5>
-                                    <p class="text-truncate" style="max-height:48px">${fn:split(contents, ',')[i]}</p>
-                                    <div class="d-flex justify-content-between align-items-center mt-2">
-                                        <small>장소: ${fn:split(places, ',')[i]}</small>
-                                        <a href="/meeting/${fn:split(ids, ',')[i]}" class="btn btn-sm btn-primary">상세</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
+                    <c:forEach var="m" items="${meetings}">
+					    <div class="col-12 col-md-6 col-lg-4">
+					        <div class="card">
+					            <img src="${m.imageUrl}" class="w-100">
+					            <div class="p-3">
+					
+					                <div class="small text-muted mb-1">
+					                    ${m.category} • ${m.meetingDate}
+					                </div>
+					
+					                <h5>${m.title}</h5>
+					                <p class="text-truncate" style="max-height:48px">${m.content}</p>
+					
+					                <div class="d-flex justify-content-between align-items-center mt-2">
+					                    <small>장소: ${m.location}</small>
+					                    <a href="/meeting/detail/${m.meetingId}" class="btn btn-sm btn-primary">상세</a>
+					                </div>
+					            </div>
+					        </div>
+					    </div>
+					</c:forEach>
                 </div>
             </div>
 

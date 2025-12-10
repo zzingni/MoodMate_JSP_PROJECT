@@ -3,6 +3,7 @@ package com.example.demo.config;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 import com.example.demo.user.User;
 import com.example.demo.user.UserRepository;
@@ -12,6 +13,7 @@ import com.example.demo.user.UserRepository;
 public class UserInitConfig {
 	
 	@Bean
+	@Order(1)
 	public CommandLineRunner initUser (UserRepository userRepository) { // CommandLineRunner -> 스프링 서버 켜질 때 딱 한 번 실행되는 코드
 		return args -> {
 			// 이미 존재하면 넣지 않기

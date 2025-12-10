@@ -83,28 +83,9 @@
 
 
 <div class="meeting-card">
-    <img src="/image/lala.jpg" alt="모임 이미지">
+    <img src="${meeting.imageUrl}" class="card-img-top" alt="모임 이미지">
 
     <div class="meeting-body">
-        <%-- <!-- 카테고리 배지 -->
-        <c:choose>
-            <c:when test="${meeting.category == '추천'}">
-                <span class="badge bg-primary badge-category">${meeting.category}</span>
-            </c:when>
-            <c:when test="${meeting.category == '영화'}">
-                <span class="badge bg-success badge-category">${meeting.category}</span>
-            </c:when>
-            <c:when test="${meeting.category == '연극'}">
-                <span class="badge bg-warning text-dark badge-category">${meeting.category}</span>
-            </c:when>
-            <c:when test="${meeting.category == '독서'}">
-                <span class="badge bg-info text-dark badge-category">${meeting.category}</span>
-            </c:when>
-            <c:otherwise>
-                <span class="badge bg-secondary badge-category">${meeting.category}</span>
-            </c:otherwise>
-        </c:choose> --%>
-
         <h3 class="meeting-title">${meeting.title}</h3>
         <p class="meeting-content">${meeting.content}</p>
 

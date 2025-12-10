@@ -35,6 +35,24 @@ public class MeetingController {
 		User loginUser = (User) session.getAttribute("loginUser"); // 현재 세션에 저장되어 있는 유저 가져오기
 		
 		meeting.setUser(loginUser); // meeting에 user 세팅
+		
+		switch (meeting.getCategory()) {
+	        case "영화":
+	            meeting.setImageUrl("/image/meetingMovie.jpg");
+	            break;
+	        case "연극":
+	            meeting.setImageUrl("/image/meetingTheater.jpg");
+	            break;
+	        case "뮤지컬":
+	            meeting.setImageUrl("/image/meetingMusical.jpg");
+	            break;
+	        case "독서":
+	            meeting.setImageUrl("/image/meetingBook.jpg");
+	            break;
+	        default:
+	            meeting.setImageUrl("/image/default.jpg"); // 기본 이미지
+	    }
+
 		Meeting saved = meetingRepository.save(meeting); // db에 저장. > repository의 save는 db에 데이터를 저장하고 키값을 반환함 > 그걸 바로 사용
 		return "redirect:/meeting/detail/" + saved.getMeetingId();
 	}
@@ -54,7 +72,7 @@ public class MeetingController {
 	
 	// 모임 리스트 페이지로 이동(db에 있는 meeting List와 같이 넘김)
 	@GetMapping("/list")
-	public String meetingList(@RequestParam(required = false) String category, Model model, HttpSession session) {
+	public String meetingList(@RequestParam(name = "category", required = false) String category, Model model, HttpSession session) {
 		List<Meeting> meetings;
 		
 		// 현재 로그인한 사용자 정보
@@ -81,7 +99,7 @@ public class MeetingController {
 	    model.addAttribute("selectedCategory", category);
 	    model.addAttribute("favorite", loginUser != null ? loginUser.getFavorite() : null);
 
-	    return "meeting/list";
+	    return "meetingList";
 	}
 	
 }

@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 import com.example.demo.meeting.Meeting;
 import com.example.demo.meeting.MeetingRepository;
@@ -22,6 +23,7 @@ public class MeetingInitConfig {
 	private final MeetingRepository meetingRepository;
 
 	@Bean
+	@Order(2)
 	public CommandLineRunner initMeeting() {
 		return args -> {
 	        // 사용자 확보
@@ -41,6 +43,7 @@ public class MeetingInitConfig {
 	        m1.setLocation("서울 강남");
 	        m1.setCategory("독서");
 	        m1.setContentName("데미안");
+	        m1.setImageUrl("/image/meetingBook.jpg");
 	        m1.setCapacity(10);
 	        m1.setCurrentCount(10);
 	        m1.setMeetingDate(new Date());  // 오늘로 설정
@@ -54,6 +57,7 @@ public class MeetingInitConfig {
 	        m2.setLocation("서울 홍대");
 	        m2.setCategory("영화");
 	        m2.setContentName("인터스텔라");
+	        m2.setImageUrl("/image/meetingMovie.jpg");
 	        m2.setCapacity(5);
 	        m2.setCurrentCount(4);
 	        m2.setMeetingDate(new Date());  // 오늘로 설정
