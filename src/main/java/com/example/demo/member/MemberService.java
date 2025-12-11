@@ -18,6 +18,7 @@ public class MemberService {
 	private final UserRepository userRepository;
 	private final MemberRepository memberRepository;
 	
+	// 참가 신청 로직
 	public void joinMeeting(int meetingId, int userId) {
 		
 		Meeting meeting = meetingRepository.findById(meetingId)
@@ -47,5 +48,14 @@ public class MemberService {
 	    // 모임 현재 인원 증가
 	    meeting.setCurrentCount(meeting.getCurrentCount() + 1);
 	    meetingRepository.save(meeting);
+	}
+	
+	// 승인 및 거절시 update
+	public void updateStatus(int memberId, String status) {
+	    Member member = memberRepository.findById(memberId)
+	            .orElseThrow(() -> new IllegalArgumentException("해당 신청자 없음"));
+
+	    member.setConfirmStatus(status);
+	    memberRepository.save(member);
 	}
 }

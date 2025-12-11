@@ -98,7 +98,7 @@
 		    <c:when test="${not empty loginUser and loginUser.userId == meeting.user.userId}">
 		        <div class="d-flex gap-2 mt-3">
 		            <button class="btn btn-warning w-50"
-		                    onclick="location.href='/meeting/${meeting.meetingId}/applicants'">
+		                    onclick="location.href='/member/${meeting.meetingId}/applicants'">
 		                신청 현황
 		            </button>
 		
@@ -128,7 +128,7 @@
 		    <%-- 일반 유저(로그인 상태) --%>
 		    <c:otherwise>
 		        <button class="btn btn-primary btn-apply"
-		                onclick="location.href='/meeting/${meeting.meetingId}/join'">
+		                onclick="location.href='/member/${meeting.meetingId}/join'">
 		            모임 신청하기
 		        </button>
 		    </c:otherwise>

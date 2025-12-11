@@ -87,9 +87,26 @@
 	    color: #dc3545;
 	    font-weight: 600;
 	}
+	
+	/* 사이드바 active 상태 스타일 */
+	#mypageMenu .list-group-item.active {
+	    background-color: #0d6efd;
+	    color: #fff;
+	    font-weight: 600;
+	    border-color: #0d6efd;
+	}
+	
+	/* 구분선 디자인  */
+	.section-divider {
+	    width: 100%;
+	    height: 1px;
+	    background: #ddd;
+	    margin: 40px 0;
+	}
+	
 </style>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target="#mypageMenu" data-bs-offset="100" tabindex="0">
 <!-- header 파일 inlcude -->
 <%@ include file="/WEB-INF/views/header.jsp" %>
 
@@ -103,11 +120,11 @@
 <div class="container page-wrap">
     <!-- 사이드바 -->
     <aside class="sidebar">
-        <div class="list-group shadow-sm rounded-3">
-            <a href="#myCreatedMeetings" class="list-group-item list-group-item-action active">내가 만든 모임</a>
-            <a href="#myAppliedMeetings" class="list-group-item list-group-item-action">신청한 모임</a>
-        </div>
-    </aside>
+	    <div id="mypageMenu" class="list-group shadow-sm rounded-3">
+	        <a href="#myCreatedMeetings" class="list-group-item list-group-item-action">내가 만든 모임</a>
+	        <a href="#myAppliedMeetings" class="list-group-item list-group-item-action">신청한 모임</a>
+	    </div>
+	</aside>
 
     <div class="container page-wrap">
     <!-- 메인 콘텐츠 -->
@@ -137,6 +154,8 @@
             </div>
         </section>
 
+		<div class="section-divider"></div>
+
         <!-- 내가 신청한 모임 -->
         <section id="myAppliedMeetings" class="card-section">
             <div class="row g-4">
@@ -145,28 +164,43 @@
                 <c:forEach items="${joinedMeetings}" var="m">
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="card meeting-card shadow-sm">
-                            <img src="${m.imageUrl}" class="card-img-top" alt="meeting">
+                            <img src="${m.meeting.imageUrl}" class="card-img-top" alt="meeting">
                             <div class="card-body">
                             
                             	<!-- 카테고리 / 모임 날짜 -->
                                 <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <div class="badge-category">${m.category}</div>
-                                    <small class="text-muted"><fmt:formatDate value="${m.meetingDate}" pattern="yyyy/MM/dd(E) HH:mm" /></small>
+                                    <div class="badge-category">${m.meeting.category}</div>
+                                    <small class="text-muted"><fmt:formatDate value="${m.meeting.meetingDate}" pattern="yyyy/MM/dd(E) HH:mm" /></small>
                                 </div>
                                 
                                 <!-- 모임 제목 (상세 페이지 링크) -->
-                                <h5><a href="/meeting/${m.meetingId}" class="text-decoration-none text-dark">${m.title}</a></h5>
+                                <h5><a href="/meeting/${m.meeting.meetingId}" class="text-decoration-none text-dark">${m.meeting.title}</a></h5>
                                 
                                 <!-- 모임 내용 요약 -->
-                                <p class="small text-truncate" style="max-height:40px">${m.content}</p>
+                                <p class="small text-truncate" style="max-height:40px">${m.meeting.content}</p>
                                 
                                 <!-- 장소 정보 + 상세 버튼 -->
                                 <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <span class="${m.status == 'approved' ? 'status-approved' : 'status-rejected'}">
-                                        ${m.status == 'approved' ? '승인' : '거절'}
-                                    </span>
-                                    <a href="/meeting/detail/${m.meetingId}" class="btn btn-sm btn-outline-primary">상세</a>
-                                </div>
+							    <c:choose>
+							        <%-- 대기 상태 --%>
+							        <c:when test="${m.confirmStatus == '대기'}">
+							            <span class="badge bg-secondary">대기</span>
+							        </c:when>
+							
+							        <%-- 승인 상태 --%>
+							        <c:when test="${m.confirmStatus == '승인'}">
+							            <span class="badge bg-success">승인</span>
+							        </c:when>
+							
+							        <%-- 거절 상태 --%>
+							        <c:otherwise>
+							            <span class="badge bg-danger">거절</span>
+							        </c:otherwise>
+							    </c:choose>
+							    <a href="/meeting/detail/${m.meeting.meetingId}" class="btn btn-sm btn-outline-primary">
+							        상세
+							    </a>
+							</div>
                             </div>
                         </div>
                     </div>
@@ -175,5 +209,11 @@
         </section>
     </main>
 </div>
+<script>
+    var scrollSpy = new bootstrap.ScrollSpy(document.body, {
+        target: '#mypageMenu',
+        offset: 100
+    });
+</script>
 </body>
 </html>
