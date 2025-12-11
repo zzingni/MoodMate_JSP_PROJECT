@@ -11,4 +11,7 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 	boolean existsByMeetingAndUser(Meeting meeting, User user); // 이미 신청한 모임인지 확인하기 위해\
 	List<Member> findByUser(User user);
 	List<Member> findByMeeting_MeetingId(int meetingId);
+	
+	// 유저가 특정 모임에 신청한 적 있는지 확인
+    boolean existsByUserAndMeeting(User user, Meeting meeting);
 }

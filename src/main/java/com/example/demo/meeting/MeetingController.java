@@ -64,10 +64,18 @@ public class MeetingController {
 		Meeting meeting = meetingRepository.findByMeetingId(id)
 				.orElseThrow(() -> new IllegalArgumentException("존재하지 않는 모임입니다. : " + id));
 		
+		boolean alreadyApplied = false;
+		
 		User loginUser = (User) session.getAttribute("loginUser");
+		
+		if (loginUser != null) {
+		        alreadyApplied = meeting.getMembers().stream()
+		                .anyMatch(m -> m.getUser().getUserId() == loginUser.getUserId());
+		}
 		 
 		model.addAttribute("meeting", meeting);
 		model.addAttribute("loginUser", loginUser); // detail 페이지에서 현재 로그인 사용자와 다른 사용자 구분 해야 함. 
+		model.addAttribute("alreadyApplied", alreadyApplied); // 이미 신청했는지 확인 필요
 		return "meetingDetail";
 	}
 	

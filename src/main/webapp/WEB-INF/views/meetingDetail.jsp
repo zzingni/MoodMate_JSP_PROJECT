@@ -131,11 +131,22 @@
 		        </button>
 		    </div>
 		</c:when>
+		
 	    <%-- 로그인하지 않은 경우 --%>
 	    <c:when test="${empty loginUser}">
 	        <button class="btn btn-primary btn-apply"
 	                onclick="alert('로그인을 해주세요!'); location.href='/login';">
 	            모임 신청하기
+	        </button>
+	    </c:when>
+	    
+	    <%-- 이미 신청한 경우 --%>
+	    <c:when test="${alreadyApplied}">
+	        <div class="alert alert-info" role="alert">
+	            이미 신청한 모임입니다.
+	        </div>
+	        <button class="btn btn-secondary btn-apply" disabled>
+	            신청 완료
 	        </button>
 	    </c:when>
 	
