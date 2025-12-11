@@ -72,6 +72,7 @@
 	    display: flex;
 	    gap: 24px;
 	    margin-top: 30px;
+	    padding-bottom: 80px;
 	}
 	
 	.sidebar {

@@ -102,4 +102,62 @@ public class MeetingController {
 	    return "meetingList";
 	}
 	
+	// 모임 수정 페이지로 이동
+	@GetMapping("/edit/{meetingId}")
+	public String editMeeting(@PathVariable("meetingId") int meetingId, Model model) {
+		Meeting meeting = meetingRepository.findById(meetingId)
+	            .orElseThrow(() -> new IllegalArgumentException("모임을 찾을 수 없습니다."));
+
+	    model.addAttribute("meeting", meeting);
+	    model.addAttribute("meetingDateObj", meeting.getMeetingDate());
+	    
+	    return "meetingEdit";
+	}
+	
+	// 모임 수정 
+	@PostMapping("/edit/{meetingId}")
+	public String updateMeeting(@PathVariable("meetingId") int meetingId, Meeting updatedMeeting) {
+		
+		Meeting meeting = meetingRepository.findById(meetingId)
+	            .orElseThrow(() -> new IllegalArgumentException("모임을 찾을 수 없습니다."));
+
+	    // 기존 meeting에 새로운 값 덮어쓰기
+	    meeting.setTitle(updatedMeeting.getTitle());
+	    meeting.setContent(updatedMeeting.getContent());
+	    meeting.setLocation(updatedMeeting.getLocation());
+	    meeting.setMeetingDate(updatedMeeting.getMeetingDate());
+	    meeting.setCapacity(updatedMeeting.getCapacity());
+	    meeting.setContentName(updatedMeeting.getContentName());
+	    meeting.setCategory(updatedMeeting.getCategory());
+
+	    // 카테고리 변경 시 이미지 자동 설정
+	    switch (updatedMeeting.getCategory()) {
+	        case "영화":
+	            meeting.setImageUrl("/image/meetingMovie.jpg");
+	            break;
+	        case "연극":
+	            meeting.setImageUrl("/image/meetingTheater.jpg");
+	            break;
+	        case "뮤지컬":
+	            meeting.setImageUrl("/image/meetingMusical.jpg");
+	            break;
+	        case "독서":
+	            meeting.setImageUrl("/image/meetingBook.jpg");
+	            break;
+	        default:
+	            meeting.setImageUrl("/image/default.jpg");
+	    }
+
+	    meetingRepository.save(meeting);
+
+	    return "redirect:/meeting/detail/" + meetingId;
+	}
+	
+	// 모임 삭제
+	@GetMapping("/delete/{meetingId}")
+	public String deleteMeeting(@PathVariable("meetingId") int meetingId) {
+		meetingRepository.deleteById(meetingId);
+
+	    return "redirect:/meeting/list";
+	}
 }

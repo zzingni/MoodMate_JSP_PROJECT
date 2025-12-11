@@ -11,6 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.example.demo.member.Member;
 import com.example.demo.user.User;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,7 +37,7 @@ public class Meeting {
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
 	
-	@OneToMany(mappedBy = "meeting")
+	@OneToMany(mappedBy = "meeting", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Member> members = new ArrayList<>();
 	
 	@Column(length = 100, nullable = false)
