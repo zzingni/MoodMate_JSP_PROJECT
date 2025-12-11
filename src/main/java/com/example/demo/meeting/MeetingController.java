@@ -1,5 +1,6 @@
 package com.example.demo.meeting;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -83,10 +84,15 @@ public class MeetingController {
 	    }
 	    else if (category.equals("추천")) {
 	        if (loginUser != null && loginUser.getFavorite() != null) {
-	            // 관심 분야와 일치하는 모임만 추천
-	            meetings = meetingRepository.findByCategory(loginUser.getFavorite());
+
+	            // String → List 변환
+	            List<String> favoriteList =
+	                    Arrays.asList(loginUser.getFavorite().split(","));
+
+	            // 여러 카테고리로 검색
+	            meetings = meetingRepository.findByCategories(favoriteList);
+
 	        } else {
-	            // 로그인 안 했으면 전체 보여주는게 안전함
 	            meetings = meetingRepository.findAll();
 	        }
 	    }

@@ -26,7 +26,7 @@ public class UserInitConfig {
 				user1.setNickname("징니");
 				user1.setGender("여");
 				user1.setAge(26);
-				user1.setFavorite("영화");
+				user1.setFavorite("독서,영화");
 				
 				userRepository.save(user1);
 				

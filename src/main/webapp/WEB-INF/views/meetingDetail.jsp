@@ -68,6 +68,7 @@
 	
 	.btn-apply {
 	    width: 100%;
+	    height : 45px;
 	    font-weight: 600;
 	    padding: 10px 0;
 	}
@@ -119,13 +120,13 @@
 		
 		        <%-- 신청현황 --%>
 		        <button class="btn btn-warning"
-		                onclick="location.href='/member/${meeting.meetingId}/applicants'">
+		                onclick="location.href='/member/${meeting.meetingId}/applicants'" style="height : 45px;">
 		            신청 현황 보기
 		        </button>
 		        
 		        <%-- 목록으로 --%>
 		        <button class="btn btn-outline-secondary"
-		                onclick="location.href='/meeting/list'">
+		                onclick="location.href='/meeting/list'" style="height : 45px;">
 		            모임 목록
 		        </button>
 		    </div>
